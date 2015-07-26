@@ -1,0 +1,21 @@
+{
+  "name": "lumxtest",
+  "version": "0.0.0",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    ".meteor/local/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lumx": "~0.3.73"
+  },
+  "overrides": {
+    "angular": {
+      "main": []
+    }
+  }
+}

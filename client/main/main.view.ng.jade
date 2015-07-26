@@ -1,0 +1,36 @@
+.main.container
+  h1.text-center Things
+  form.bgc-grey-100.pt0(ng-submit='save()', name='form', novalidate='', class='mt++ p++')
+    div(flex-container='row')
+      div(flex-item='10')
+        lx-text-field(label='Add a thing')
+          input(type='text', ng-model='newThing.name')
+      div(flex-item='2')
+        input.btn.btn--m.btn--blue.btn--raised(type='submit', value='Add', style='width: 100%; margin-top: 30px')
+  .data-table-container
+    header.data-table-header
+      .data-table-header__label.left
+        span.fs-title List of things
+      .data-table-header__actions.toolbar__right
+        lx-dropdown(position='right', over-toggle='true')
+          button.btn.btn--l.btn--black.btn--icon(lx-ripple, lx-dropdown-toggle)
+            i.mdi.mdi-dots-vertical
+          lx-dropdown-menu
+            ul
+              li
+                a.dropdown-link.dropdown-link--is-header Sort direction
+              li
+                a.dropdown-link(ng-click='orderProperty = 1') Ascending
+              li
+                a.dropdown-link(ng-click='orderProperty = -1') Descending
+        lx-search-filter(model='search', position='right', placeholder='Search', closed)
+    table.data-table
+      tbody
+        tr.data-table__row(dir-paginate='thing in things | itemsPerPage: perPage', total-items='thingsCount.count')
+          td {{ thing.name }}
+          td.text-right
+            button.btn.btn--m.btn--black.btn--icon(lx-ripple, ng-click='remove(thing)')
+              i.mdi.mdi-delete
+  dir-pagination-controls(on-page-change='pageChanged(newPageNumber)')
+
+  p.text-center Total number of things: {{thingsCount.count}}
